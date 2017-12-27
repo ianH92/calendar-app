@@ -10,6 +10,17 @@ var users = require('./routes/users');
 
 var app = express();
 
+//Setting up the mongoose database connection
+var mongoosePassword = require('./password.js');
+var mongoose = require('mongoose');
+var mongoDatabase = mongoosePassword.databasePassword();
+mongoose.connect(mongoDatabase, {
+	useMongoClient: true
+});
+mongoose.Promise = global.Promise;
+var dataBase = mongoose.connection;
+dataBase.on('error', console.error.bind(console, 'MongoBD database connection failure'));
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
