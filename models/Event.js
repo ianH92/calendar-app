@@ -9,6 +9,10 @@ var EventSchema = new mongoose.Schema({
 	description: {type: String, max: 250},
 });
 
+EventSchema.virtual('url').get(function() {
+	return('/events/' + this._id);
+})
+
 EventSchema.virtual('daysLeft').get(function() {
 	let startYear = this.created.year;
 	let endYear = this.eventDate.year;
