@@ -22,3 +22,27 @@ exports.createEvent = function(req, res) {
 	
 	res.render('createEvent', {minDate: minDate});
 }
+
+exports.createEventPost = function(req, res) {
+	console.log('name = ' + req.body.name);
+	console.log('priority = ' + req.body.priority);
+	console.log('event date = ' + req.body.date);
+	console.log('description = ' + req.body.description);
+	
+	let userid = '5a444deae24862450047baab';
+	
+	let newEvent = new Event({
+		name: req.body.name,
+		user: userid,
+		priority: req.body.priority,
+		eventDate: req.body.date,
+		description: req.body.description,
+	});
+	
+	newEvent.save(function(error, savedEvent) {
+		if(error) {
+			console.log('Error');
+		}
+		res.redirect(savedEvent.url);
+	});
+}
