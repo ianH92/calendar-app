@@ -1,0 +1,46 @@
+
+{{!-- err: An error value passed to indicate form problems --}}
+{{!-- minDate : The minimum date accepted by the input --}}
+
+<!DOCTYPE html>
+<html lang="en-US">
+	<head>
+		<meta charset="UTF-8">
+		<title>Create an event</title>
+	</head>
+	
+	<body>
+		<p>Event Information</p>
+		<fieldset>
+			<Legend>Enter the event information here</legend>
+			<form method="post">
+				<div>
+					<label for="name">Event Name</label>
+					<input type="text" id="name" name="name" required>
+				</div>
+				<div>
+					<label for="date">Event Date</label>
+					<input type="date" id="date" name="date" min={{minDate}}>
+				<div>
+				<div>
+					<label for="priority">Event Priority</label>
+					<select id =priority" name="priority">
+						<option>1</option>
+						<option>2</option>
+						<option>3</option>
+						<option>4</option>
+						<option>5</option>
+					</select>
+				</div>
+				<div>
+					<label for="description">Event Description</label>
+					<textarea id="description" name="description">Enter description here...</textarea>
+				</div>
+				<div>
+					<button type="submit">Create Event</button>
+				</div>
+			</form>
+		</fieldset>
+	</body>
+</html>
+		
