@@ -15,3 +15,10 @@ exports.eventDisplay = function(req, res) {
 		}
 	});
 };
+
+exports.createEvent = function(req, res) {
+	let now = new Date();
+	let minDate = now.getFullYear() + '-' + (now.getMonth() + 1) + '-' + now.getDate();
+	
+	res.render('createEvent', {minDate: minDate});
+}
