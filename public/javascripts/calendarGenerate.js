@@ -16,5 +16,7 @@ xmlReq.onload = function() {
 		p.textContent = day['day'];
 		
 		td.appendChild(p);
+		
+		td.setAttribute('class', 'full');
 	}
 }
