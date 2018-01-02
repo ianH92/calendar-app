@@ -14,8 +14,13 @@ xmlReq.onload = function() {
 		
 		let p = document.createElement('p');
 		p.textContent = day['day'];
-		
 		td.appendChild(p);
+		
+		for(let j = 0; j < day['events'].length; j++) {
+			let des = document.createElement('p');
+			des.textContent = day['events'][j].name;
+			td.appendChild(des);
+		}
 		
 		if(day['currMonth'] === true) {
 			td.setAttribute('class', 'full active');

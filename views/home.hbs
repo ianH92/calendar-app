@@ -8,12 +8,12 @@
 
 	<body>
 	<div id="calendar">
-		<div id="calcontrols">
-			<button id="prev">{{prevMonth}}</button>
-			<p id = "curr"><strong>{{month}}</strong></p>
-			<button id="next">{{nextMonth}}</button>
-		</div>
 		<table>
+			<tr>
+				<td id="prev" class="top">{{prevMonth}}</td>
+				<td id="curr" colspan="5" class="top">{{month}}</td>
+				<td id="next" class="top">{{nextMonth}}</td>
+			</tr>
 			<tr>
 				<th>Sun</th>
 				<th>Mon</th>
