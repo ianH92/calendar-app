@@ -1,0 +1,11 @@
+.empty {
+	border: 0px;
+}
+
+.full {
+	border: 1px solid black;
+}
+
+th {
+	border: 1px solid black;
+}
