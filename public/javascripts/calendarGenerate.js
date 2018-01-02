@@ -17,6 +17,10 @@ xmlReq.onload = function() {
 		
 		td.appendChild(p);
 		
-		td.setAttribute('class', 'full');
+		if(day['currMonth'] === true) {
+			td.setAttribute('class', 'full active');
+		} else {
+			td.setAttribute('class', 'full notactive');
+		}
 	}
 }
