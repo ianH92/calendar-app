@@ -1,11 +1,11 @@
 var mongoose = require('mongoose');
 
 var EventSchema = new mongoose.Schema({
-	name: {type: String, required: true, max: 150},
+	name: {type: String, required: true, min: 3, max: 150},
 	created: {type: Date, required: true, default: Date.now},
 	user: {type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true},
 	priority: {type: Number, min: 1, max: 5, default: 5},
-	eventDate: {type: Date, min: Date.now},
+	eventDate: {type: Date, min: Date.now, max: "2096-12-31"},
 	description: {type: String, max: 250},
 });
 
@@ -14,6 +14,8 @@ EventSchema.virtual('url').get(function() {
 })
 
 EventSchema.virtual('daysLeft').get(function() {
+	if(this.eventDate === null) { return 0; }
+	
 	let startYear = this.created.year;
 	let endYear = this.eventDate.year;
 	
@@ -22,6 +24,23 @@ EventSchema.virtual('daysLeft').get(function() {
 	
 	let startDay = this.created.day;
 	let endDay = this.eventDate.day;
+	
+	let negative = false;
+	if(endYear <= startYear && endMonth <= startMonth && endDay < startDay) {
+		let temp = startYear;
+		startYear = endYear;
+		endYear = temp;
+		
+		temp = startMonth;
+		startMonth = endMonth;
+		endMonth = temp;
+		
+		temp = startDay;
+		startDay = endDay;
+		endDay = temp;
+		
+		negative = true;
+	}
 	
 	let days = 0;
 	let daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]; 
@@ -59,7 +78,8 @@ EventSchema.virtual('daysLeft').get(function() {
 		}
 		days++;
 	}
-	return days;
+	
+	return (negative) ? (days * -1) : days;
 });
 
 EventSchema.virtual('url').get(function() {
