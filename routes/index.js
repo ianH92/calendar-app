@@ -4,12 +4,14 @@ var indexController = require('../controllers/indexController');
 var calendarController = require('../controllers/calendarController');
 
 /* GET home page. */
-router.get('/', calendarController.createCalendarJSON);
+router.get('/', indexController.homePage);
 
-router.get('/home', calendarController.createCalendarJSON);
+router.get('/home', indexController.homePage);
 
 router.get('/about', function(req, res, next) {
 	res.send('This is the about page');
 });
+
+router.get('/:year/:month', calendarController.createCalendarJSON);
 
 module.exports = router;
