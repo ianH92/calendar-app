@@ -35,6 +35,7 @@ exports.createCalendarJSON = function(req, res) {
 			let temp = new Object();
 			temp['day'] = maxDayPrevMonth;
 			temp['events'] = [];
+			temp['currMonth'] = false;
 			
 			obj['calendar'].unshift(temp);
 			maxDayPrevMonth--;
@@ -56,6 +57,7 @@ exports.createCalendarJSON = function(req, res) {
 			temp['day'] = i;
 			//Add the events for the current month
 			temp['events'] = dayEvents[i];
+			temp['currMonth'] = true;
 			
 			obj['calendar'].push(temp);
 		}
@@ -66,6 +68,7 @@ exports.createCalendarJSON = function(req, res) {
 			let temp = new Object();
 			temp['day'] = i;
 			temp['events'] = [];
+			temp['currMonth'] = false;
 			
 			obj['calendar'].push(temp);
 		}

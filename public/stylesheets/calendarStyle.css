@@ -1,3 +1,11 @@
+.notactive {
+	color: lightgray;
+}
+
+.calendar {
+	float: left;
+}
+
 .empty {
 	border: 0px;
 }
@@ -6,6 +14,33 @@
 	border: 1px solid black;
 }
 
+#prev {
+	float: left;
+}
+
+#curr {
+	float: left;
+}
+
+
+table {
+	clear: both;
+	border-collapse: collapse;
+	table-layout: fixed;
+}
+
 th {
-	border: 1px solid black;
+	box-sizing: border-box;
+	border: 1px solid red;
+	margin: 0;
+}
+
+tr {
+	margin: 0;
+}
+
+td {
+	text-align: center;
+	width: 80px;
+	height: 80px;
 }
