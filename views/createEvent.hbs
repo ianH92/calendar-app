@@ -1,6 +1,4 @@
-
-{{!-- err: An error value passed to indicate form problems --}}
-{{!-- minDate : The minimum date accepted by the input --}}
+{{!-- minDate : The minimum date accepted by the input form --}}
 
 <!DOCTYPE html>
 <html lang="en-US">
@@ -16,11 +14,11 @@
 			<form method="post">
 				<div>
 					<label for="name">Event Name</label>
-					<input type="text" id="name" name="name" required>
+					<input type="text" id="name" name="name" required minlength="3" maxlength="150">
 				</div>
 				<div>
 					<label for="date">Event Date</label>
-					<input type="date" id="date" name="date" min={{minDate}}>
+					<input type="date" id="date" name="date" min={{minDate}} max="2096-12-31">
 				<div>
 				<div>
 					<label for="priority">Event Priority</label>
@@ -34,7 +32,7 @@
 				</div>
 				<div>
 					<label for="description">Event Description</label>
-					<textarea id="description" name="description">Enter description here...</textarea>
+					<textarea id="description" name="description" maxlength="250">Enter description here...</textarea>
 				</div>
 				<div>
 					<button type="submit">Create Event</button>

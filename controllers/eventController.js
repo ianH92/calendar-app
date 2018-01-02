@@ -24,10 +24,6 @@ exports.createEvent = function(req, res) {
 }
 
 exports.createEventPost = function(req, res) {
-	console.log('name = ' + req.body.name);
-	console.log('priority = ' + req.body.priority);
-	console.log('event date = ' + req.body.date);
-	console.log('description = ' + req.body.description);
 	
 	let userid = '5a444deae24862450047baab';
 	
