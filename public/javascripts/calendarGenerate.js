@@ -6,16 +6,15 @@ xmlReq.responseType = 'json';
 xmlReq.send();
 
 xmlReq.onload = function() {
-	let cal = xmlReq.response;
+	let cal = xmlReq.response.calendar;
 	
-	console.log(cal);
-	
-	for(let i = 1; i <= cal.calendar.length; i++) {
-		let currDay = document.getElementById(i);
-		currDay.appendChild(document.createElement('p', cal['calendar'][i]['day']));
+	for(let i = 0; i < cal.length; i++) {
+		let day = cal[i];
+		let td = document.getElementById(i + 1);
 		
-		for(let j = 0; j < cal['calendar'][i]['events'].length; j++) {
-			currDay.appendChild(document.createElement('p', cal['calendar'][i]['events'][j].name));
-		}
+		let p = document.createElement('p');
+		p.textContent = day['day'];
+		
+		td.appendChild(p);
 	}
 }
