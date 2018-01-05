@@ -1,7 +1,7 @@
 let xmlReq = new XMLHttpRequest();
 let now = new Date();
 
-xmlReq.open('GET', ('/' + now.getFullYear() + '/' + now.getMonth()));
+xmlReq.open('GET', ('/getcalendar/' + now.getFullYear() + '/' + now.getMonth()));
 xmlReq.responseType = 'json';
 xmlReq.send();
 

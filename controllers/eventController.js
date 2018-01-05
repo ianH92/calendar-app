@@ -6,7 +6,7 @@ exports.eventDisplay = function(req, res) {
 	
 	Event.findById(id, function(err, eventDetails) {
 		if(err) { 
-			res.render('error', {error: err});
+			res.render('error at event display', {error: err});
 		} else {
 			res.render('event',
 				{name: eventDetails.name, priority: eventDetails.priority, 
@@ -17,16 +17,18 @@ exports.eventDisplay = function(req, res) {
 };
 
 exports.createEvent = function(req, res) {
-	let now = new Date();
-	let minDate = now.getFullYear() + '-' + (now.getMonth() + 1) + '-' + now.getDate();
-	
-	res.render('createEvent', {minDate: minDate});
+	res.render('createEvent');
 }
 
 exports.createEventPost = function(req, res) {
 	
 	let userid = '5a444deae24862450047baab';
 	
+	let userDate = req.body.date;
+	console.log(userDate);
+	//console.log(userDate.toUTCString());
+	
+	/*
 	let newEvent = new Event({
 		name: req.body.name,
 		user: userid,
@@ -37,8 +39,9 @@ exports.createEventPost = function(req, res) {
 	
 	newEvent.save(function(error, savedEvent) {
 		if(error) {
-			console.log('Error');
+			console.log('Error at event save');
 		}
 		res.redirect(savedEvent.url);
 	});
+	*/
 }
