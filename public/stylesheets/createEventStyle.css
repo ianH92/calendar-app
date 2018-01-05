@@ -1,0 +1,50 @@
+html {
+	font-family: serif;
+}
+
+h2 {
+	text-align: center;
+	padding-bottom: 5px;
+	border-bottom: 5px solid lightblue;
+}
+
+form {
+	border: 2px solid lighgray;
+	width: 410px;
+	margin: 0 auto;
+}
+
+label {
+	text-align: right;
+	display: inline-block;
+	width: 150px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	
+	margin-left: 0;
+	margin-right: 2px;
+}
+
+input {
+	margin-right: 0;
+	margin-left: 2px;
+}
+
+input {
+	box-sizing: border-box;
+	width: 200px;
+}
+
+textarea {
+	box-sizing: border-box;
+	width: 200px;
+	height: 300px;
+	vertical-align: top;
+	margin-bottom: 10px;
+}
+
+button {
+	margin-left: 154px;
+	width: 150px;
+	margin-bottom: 5px;
+}

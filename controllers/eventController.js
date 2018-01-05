@@ -11,7 +11,7 @@ exports.eventDisplay = function(req, res) {
 			res.render('error at event display', {error: err});
 		} else {
 			res.render('event',
-				{name: eventDetails.name, priority: eventDetails.priority, 
+				{title: 'Event Calendar', name: eventDetails.name, priority: eventDetails.priority, 
 				due: eventDetails.eventDate, description: eventDetails.description
 			});
 		}
