@@ -49,51 +49,7 @@ prevMonth.addEventListener('click', function() {
 	xmlReq2.responseType = 'json';
 	xmlReq2.send();
 	
-	xmlReq2.onload = function() {
-		let cal = xmlReq2.response.calendar;
-		
-		for(let i = 0; i < 42; i++) {
-			let day = null;
-			
-			if(!cal.hasOwnProperty(i)) {
-				let td = document.getElementById(i + 1);
-				td.setAttribute('class', 'empty notactive');
-				
-				while(td.firstChild) {
-					td.removeChild(td.firstChild);
-				}
-				continue;
-			} else {
-				day = cal[i];
-			}
-			
-			let td = document.getElementById(i + 1);
-			
-			while(td.firstChild) {
-				td.removeChild(td.firstChild);
-			}
-			
-			let p = document.createElement('p');
-			p.textContent = day['day'];
-			td.appendChild(p);
-			
-			for(let j = 0; j < day['events'].length; j++) {
-				let des = document.createElement('p');
-				des.textContent = day['events'][j].name;
-				td.appendChild(des);
-			}
-			
-			if(day['currMonth'] === true) {
-				td.setAttribute('class', 'full active');
-			} else {
-				td.setAttribute('class', 'full notactive');
-			}
-			
-			if(day['today'] === true) {
-				td.setAttribute('class', 'full active today');
-			}
-		}
-	}
+	xmlReq2.onload = () => { genCal(xmlReq2.response.calendar); }
 	
 	prevMonth.textContent = '< ' +abbrMon[pMonth];
 	currMonth.textContent =  months[month] + ' ' + year;
@@ -121,56 +77,54 @@ nextMonth.addEventListener('click', function() {
 	xmlReq2.responseType = 'json';
 	xmlReq2.send();
 	
-	xmlReq2.onload = function() {
-		let cal = xmlReq2.response.calendar;
-		console.log(cal);
-		for(let i = 0; i < 42; i++) {
-			let day = null;
-			
-			if(!cal.hasOwnProperty(i)) {
-				let td = document.getElementById(i + 1);
-				td.setAttribute('class', 'empty notactive');
-				
-				while(td.firstChild) {
-					td.removeChild(td.firstChild);
-				}
-				continue;
-			} else {
-				day = cal[i];
-			}
-			
-			let td = document.getElementById(i + 1);
-			
-			while(td.firstChild) {
-				td.removeChild(td.firstChild);
-			}
-			
-			let p = document.createElement('p');
-			p.textContent = day['day'];
-			td.appendChild(p);
-			
-			for(let j = 0; j < day['events'].length; j++) {
-				let des = document.createElement('p');
-				des.textContent = day['events'][j].name;
-				td.appendChild(des);
-			}
-			
-			if(day['currMonth'] === true) {
-				td.setAttribute('class', 'full active');
-			} else {
-				td.setAttribute('class', 'full notactive');
-			}
-			
-			if(day['today'] === true) {
-				td.setAttribute('class', 'full active today');
-			}
-		}
-	}
+	xmlReq2.onload = () => { genCal(xmlReq2.response.calendar); }
 	
 	prevMonth.textContent = '< ' +abbrMon[pMonth];
 	currMonth.textContent =  months[month] + ' ' + year;
 	nextMonth.textContent = abbrMon[nMonth] + ' >';
 });
+
+var genCal = function(cal) {
+	for(let i = 0; i < 42; i++) {
+		let day = null;
+		let td = document.getElementById(i + 1);
+		
+		if(!cal.hasOwnProperty(i)) {
+			td.setAttribute('class', 'empty notactive');
+			td.textContent = '';
+			
+			while(td.firstChild) {
+				td.removeChild(td.firstChild);
+			}
+			
+			continue;
+		}
+		
+		day = cal[i];
+		
+		while(td.firstChild) {
+			td.removeChild(td.firstChild);
+		}
+		
+		td.textContent = day['day'];
+		
+		for(let j = 0; j < day['events'].length; j++) {
+			let evnt = document.createElement('p');
+			evnt.textContent = day['events'][j].name;
+			td.appendChild(evnt);
+		}
+		
+		if(day['currMonth'] === true) {
+			if(day['today'] === true) {
+				td.setAttribute('class', 'full active today');
+			} else {
+				td.setAttribute('class', 'full active');
+			}
+		} else {
+			td.setAttribute('class', 'full notactive');
+		}
+	}
+}
 
 xmlReq.onload = function() {
 	let cal = xmlReq.response.calendar;
@@ -179,24 +133,22 @@ xmlReq.onload = function() {
 		let day = cal[i];
 		let td = document.getElementById(i + 1);
 		
-		let p = document.createElement('p');
-		p.textContent = day['day'];
-		td.appendChild(p);
+		td.textContent = day['day'];
 		
 		for(let j = 0; j < day['events'].length; j++) {
-			let des = document.createElement('p');
-			des.textContent = day['events'][j].name;
-			td.appendChild(des);
+			let evnt = document.createElement('p');
+			evnt.textContent = day['events'][j].name;
+			td.appendChild(evnt);
 		}
 		
 		if(day['currMonth'] === true) {
-			td.setAttribute('class', 'full active');
+			if(day['today'] === true) {
+				td.setAttribute('class', 'full active today');
+			} else {
+				td.setAttribute('class', 'full active');
+			}
 		} else {
 			td.setAttribute('class', 'full notactive');
-		}
-		
-		if(day['today'] === true) {
-			td.setAttribute('class', 'full active today');
 		}
 	}
 }

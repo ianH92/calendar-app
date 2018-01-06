@@ -15,6 +15,3 @@ router.get('/about', function(req, res, next) {
 router.get('/getcalendar/:year/:month/:day', calendarController.createCalendarJSON);
 
 module.exports = router;
-
-
-28*06*42*12
