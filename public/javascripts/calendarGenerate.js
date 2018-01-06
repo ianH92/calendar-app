@@ -24,9 +24,9 @@ let prevMonth = document.getElementById('prevMonth');
 let currMonth = document.getElementById('currMonth');
 let nextMonth = document.getElementById('nextMonth');
 
-prevMonth.textContent = abbrMon[pMonth];
+prevMonth.textContent = '< ' +abbrMon[pMonth];
 currMonth.textContent =  months[month] + ' ' + year;
-nextMonth.textContent = abbrMon[nMonth];
+nextMonth.textContent = abbrMon[nMonth] + ' >';
 
 prevMonth.addEventListener('click', function() {
 	let xmlReq2 = new XMLHttpRequest();
@@ -53,7 +53,20 @@ prevMonth.addEventListener('click', function() {
 		let cal = xmlReq2.response.calendar;
 		
 		for(let i = 0; i < 42; i++) {
-			let day = cal[i];
+			let day = null;
+			
+			if(!cal.hasOwnProperty(i)) {
+				let td = document.getElementById(i + 1);
+				td.setAttribute('class', 'empty notactive');
+				
+				while(td.firstChild) {
+					td.removeChild(td.firstChild);
+				}
+				continue;
+			} else {
+				day = cal[i];
+			}
+			
 			let td = document.getElementById(i + 1);
 			
 			while(td.firstChild) {
@@ -82,9 +95,9 @@ prevMonth.addEventListener('click', function() {
 		}
 	}
 	
-	prevMonth.textContent = abbrMon[pMonth];
+	prevMonth.textContent = '< ' +abbrMon[pMonth];
 	currMonth.textContent =  months[month] + ' ' + year;
-	nextMonth.textContent = abbrMon[nMonth];
+	nextMonth.textContent = abbrMon[nMonth] + ' >';
 });
 
 nextMonth.addEventListener('click', function() {
@@ -110,9 +123,22 @@ nextMonth.addEventListener('click', function() {
 	
 	xmlReq2.onload = function() {
 		let cal = xmlReq2.response.calendar;
-		
+		console.log(cal);
 		for(let i = 0; i < 42; i++) {
-			let day = cal[i];
+			let day = null;
+			
+			if(!cal.hasOwnProperty(i)) {
+				let td = document.getElementById(i + 1);
+				td.setAttribute('class', 'empty notactive');
+				
+				while(td.firstChild) {
+					td.removeChild(td.firstChild);
+				}
+				continue;
+			} else {
+				day = cal[i];
+			}
+			
 			let td = document.getElementById(i + 1);
 			
 			while(td.firstChild) {
@@ -141,9 +167,9 @@ nextMonth.addEventListener('click', function() {
 		}
 	}
 	
-	prevMonth.textContent = abbrMon[pMonth];
+	prevMonth.textContent = '< ' +abbrMon[pMonth];
 	currMonth.textContent =  months[month] + ' ' + year;
-	nextMonth.textContent = abbrMon[nMonth];
+	nextMonth.textContent = abbrMon[nMonth] + ' >';
 });
 
 xmlReq.onload = function() {
