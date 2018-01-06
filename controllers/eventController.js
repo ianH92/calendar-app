@@ -12,7 +12,7 @@ exports.eventDisplay = function(req, res) {
 		} else {
 			res.render('event',
 				{title: 'Event Calendar', name: eventDetails.name, priority: eventDetails.priority, 
-				due: eventDetails.eventDate, description: eventDetails.description
+				date: eventDetails.eventDate.toUTCString(), description: eventDetails.description
 			});
 		}
 	});
@@ -26,13 +26,16 @@ exports.createEventPost = [
 	body('name', 'Name for Event required').isLength({min: 3, max: 80}).withMessage('Event Name' +
 		 ' must be longer than 2 characters and shorter than 81 characters.').trim(),
 	body('priority').optional({checkFalsy: true}).trim(),
-	body('eventDate').optional({checkFalsy: true}).isISO8601().withMessage('Valid Event date required'),
+	body('date').optional({checkFalsy: true}).isISO8601().withMessage('Valid Event date required'),
 	body('description').optional({checkFalsy: true}).trim(),
+	body('currdate').optional({checkFalsy: true}).trim(),
 	
 	sanitizeBody('name').trim().escape(),
 	sanitizeBody('priority').trim().escape(),
-	sanitizeBody('eventDate').trim().escape(),
+	sanitizeBody('date').trim().escape(),
 	sanitizeBody('description').trim().escape(),
+	sanitizeBody('currdate').trim().escape(),
+	
 	
 	function(req, res, next) {
 		let errors = validationResult(req);
@@ -43,6 +46,7 @@ exports.createEventPost = [
 				user: '5a444deae24862450047baab',
 				priority: req.body.priority,
 				eventDate: req.body.date,
+				created: req.body.currdate,
 				description: req.body.description,
 			});
 			
