@@ -1,17 +1,21 @@
 let now = new Date();
+let year = now.getFullYear();
+let month = now.getMonth();
+let date = now.getDate();
+
+let saveYear = year;
+let saveMonth = month;
+let saveDate = now.getDate();
 
 let xmlReq = new XMLHttpRequest();
-xmlReq.open('GET', ('/getcalendar/' + now.getFullYear() + '/' + now.getMonth()));
+xmlReq.open('GET', ('/getcalendar/' + year + '/' + month + '/' + date));
 xmlReq.responseType = 'json';
 xmlReq.send();
 
-let year = now.getFullYear();
-let month = now.getMonth();
 
-let months = ['January', 'February', 'March', 'April', 'May', 'June', 
-			  'July', 'August', 'September', 'October', 'November', 'December'];
-let abbrMon = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 
-					'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 
+			  'October', 'November', 'December'];
+let abbrMon = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
 let pMonth = ((month - 1) === -1) ? 11 : (month - 1);
 let nMonth = ((month + 1) === 12) ?  0 : (month + 1);
@@ -26,13 +30,22 @@ nextMonth.textContent = abbrMon[nMonth];
 
 prevMonth.addEventListener('click', function() {
 	let xmlReq2 = new XMLHttpRequest();
+	
 	month--;
 	month = (month === -1) ? 11 : month;
+	
 	year = (month === 11) ? (year - 1) : year;
 	pMonth = (month === 0) ? 11 : (month - 1);
 	nMonth = (month === 11) ? 0 : (month + 1);
 	
-	xmlReq2.open('GET', ('/getcalendar/' + year + '/' + month));
+	let url = '';
+	if(month === saveMonth && year === saveYear) {
+		url = ('/getcalendar/' + saveYear + '/' + saveMonth + '/' + saveDate);
+	} else {
+		url = ('/getcalendar/' + year + '/' + month + '/' + -1)
+	}
+	
+	xmlReq2.open('GET', url);
 	xmlReq2.responseType = 'json';
 	xmlReq2.send();
 	
@@ -61,6 +74,10 @@ prevMonth.addEventListener('click', function() {
 				td.setAttribute('class', 'full active');
 			} else {
 				td.setAttribute('class', 'full notactive');
+			}
+			
+			if(day['today'] === true) {
+				td.setAttribute('class', 'full active today');
 			}
 		}
 	}
@@ -72,13 +89,22 @@ prevMonth.addEventListener('click', function() {
 
 nextMonth.addEventListener('click', function() {
 	let xmlReq2 = new XMLHttpRequest();
+	
 	month++;
 	month = (month === 12) ? 0 : month;
+	
 	year = (month === 0) ? (year + 1) : year;
 	pMonth = (month === 0) ? 11 : (month - 1);
 	nMonth = (month === 11) ? 0 : (month + 1);
 	
-	xmlReq2.open('GET', ('/getcalendar/' + year + '/' + month));
+	let url = '';
+	if(month === saveMonth && year === saveYear) {
+		url = ('/getcalendar/' + saveYear + '/' + saveMonth + '/' + saveDate);
+	} else {
+		url = ('/getcalendar/' + year + '/' + month + '/' + -1)
+	}
+	
+	xmlReq2.open('GET', url);
 	xmlReq2.responseType = 'json';
 	xmlReq2.send();
 	
@@ -107,6 +133,10 @@ nextMonth.addEventListener('click', function() {
 				td.setAttribute('class', 'full active');
 			} else {
 				td.setAttribute('class', 'full notactive');
+			}
+			
+			if(day['today'] === true) {
+				td.setAttribute('class', 'full active today');
 			}
 		}
 	}
@@ -137,6 +167,10 @@ xmlReq.onload = function() {
 			td.setAttribute('class', 'full active');
 		} else {
 			td.setAttribute('class', 'full notactive');
+		}
+		
+		if(day['today'] === true) {
+			td.setAttribute('class', 'full active today');
 		}
 	}
 }
