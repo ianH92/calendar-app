@@ -7,78 +7,79 @@
 	</head>
 
 	<body>
-	<div id="calendar">
-		<table>
-			<tr>
-				<td id="prev" class="top">{{prevMonth}}</td>
-				<td id="curr" colspan="5" class="top">{{month}}</td>
-				<td id="next" class="top">{{nextMonth}}</td>
-			</tr>
-			<tr>
-				<th>Sun</th>
-				<th>Mon</th>
-				<th>Tue</th>
-				<th>Wed</th>
-				<th>Thu</th>
-				<th>Fri</th>
-				<th>Sat</th>
-			</tr>
-			<tr>
-				<td id="1" class="empty notactive"></td>
-				<td id="2" class="empty notactive"></td>
-				<td id="3" class="empty notactive"></td>
-				<td id="4" class="empty notactive"></td>
-				<td id="5" class="empty notactive"></td>
-				<td id="6" class="empty notactive"></td>
-				<td id="7" class="empty notactive"></td>
-			</tr>
-			<tr>
-				<td id="8" class="empty notactive"></td>
-				<td id="9" class="empty notactive"></td>
-				<td id="10" class="empty notactive"></td>
-				<td id="11" class="empty notactive"></td>
-				<td id="12" class="empty notactive"></td>
-				<td id="13" class="empty notactive"></td>
-				<td id="14" class="empty notactive"></td>
-			</tr>
-			<tr>
-				<td id="15" class="empty notactive"></td>
-				<td id="16" class="empty notactive"></td>
-				<td id="17" class="empty notactive"></td>
-				<td id="18" class="empty notactive"></td>
-				<td id="19" class="empty notactive"></td>
-				<td id="20" class="empty notactive"></td>
-				<td id="21" class="empty notactive"></td>
-			</tr>
-			<tr>
-				<td id="22" class="empty notactive"></td>
-				<td id="23" class="empty notactive"></td>
-				<td id="24" class="empty notactive"></td>
-				<td id="25" class="empty notactive"></td>
-				<td id="26" class="empty notactive"></td>
-				<td id="27" class="empty notactive"></td>
-				<td id="28" class="empty notactive"></td>
-			</tr>
-			<tr>
-				<td id="29" class="empty notactive"></td>
-				<td id="30" class="empty notactive"></td>
-				<td id="31" class="empty notactive"></td>
-				<td id="32" class="empty notactive"></td>
-				<td id="33" class="empty notactive"></td>
-				<td id="34" class="empty notactive"></td>
-				<td id="35" class="empty notactive"></td>
-			</tr>
-			<tr>
-				<td id="36" class="empty notactive"></td>
-				<td id="37" class="empty notactive"></td>
-				<td id="38" class="empty notactive"></td>
-				<td id="39" class="empty notactive"></td>
-				<td id="40" class="empty notactive"></td>
-				<td id="41" class="empty notactive"></td>
-				<td id="42" class="empty notactive"></td>
-			</tr>
-		</table>
-	</div>
+		<a href="/" rel="homepage" title="homepage"><h1>{{title}}</h1></a>
+		<div id="calendar">
+			<table>
+				<tr>
+					<td id="prev" class="top"><span id="prevMonth"></span></td>
+					<td id="curr" colspan="5" class="top"><span id="currMonth"></span></td>
+					<td id="next" class="top"><span id="nextMonth"></span></td>
+				</tr>
+				<tr>
+					<th>Sun</th>
+					<th>Mon</th>
+					<th>Tue</th>
+					<th>Wed</th>
+					<th>Thu</th>
+					<th>Fri</th>
+					<th>Sat</th>
+				</tr>
+				<tr>
+					<td id="1" class="empty notactive"></td>
+					<td id="2" class="empty notactive"></td>
+					<td id="3" class="empty notactive"></td>
+					<td id="4" class="empty notactive"></td>
+					<td id="5" class="empty notactive"></td>
+					<td id="6" class="empty notactive"></td>
+					<td id="7" class="empty notactive"></td>
+				</tr>
+				<tr>
+					<td id="8" class="empty notactive"></td>
+					<td id="9" class="empty notactive"></td>
+					<td id="10" class="empty notactive"></td>
+					<td id="11" class="empty notactive"></td>
+					<td id="12" class="empty notactive"></td>
+					<td id="13" class="empty notactive"></td>
+					<td id="14" class="empty notactive"></td>
+				</tr>
+				<tr>
+					<td id="15" class="empty notactive"></td>
+					<td id="16" class="empty notactive"></td>
+					<td id="17" class="empty notactive"></td>
+					<td id="18" class="empty notactive"></td>
+					<td id="19" class="empty notactive"></td>
+					<td id="20" class="empty notactive"></td>
+					<td id="21" class="empty notactive"></td>
+				</tr>
+				<tr>
+					<td id="22" class="empty notactive"></td>
+					<td id="23" class="empty notactive"></td>
+					<td id="24" class="empty notactive"></td>
+					<td id="25" class="empty notactive"></td>
+					<td id="26" class="empty notactive"></td>
+					<td id="27" class="empty notactive"></td>
+					<td id="28" class="empty notactive"></td>
+				</tr>
+				<tr>
+					<td id="29" class="empty notactive"></td>
+					<td id="30" class="empty notactive"></td>
+					<td id="31" class="empty notactive"></td>
+					<td id="32" class="empty notactive"></td>
+					<td id="33" class="empty notactive"></td>
+					<td id="34" class="empty notactive"></td>
+					<td id="35" class="empty notactive"></td>
+				</tr>
+				<tr>
+					<td id="36" class="empty notactive"></td>
+					<td id="37" class="empty notactive"></td>
+					<td id="38" class="empty notactive"></td>
+					<td id="39" class="empty notactive"></td>
+					<td id="40" class="empty notactive"></td>
+					<td id="41" class="empty notactive"></td>
+					<td id="42" class="empty notactive"></td>
+				</tr>
+			</table>
+		</div>
 		<script src="/javascripts/calendarGenerate.js"></script>
 	</body>
 	

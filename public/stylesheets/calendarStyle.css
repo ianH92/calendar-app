@@ -1,3 +1,8 @@
+div {
+	margin: 0 auto;
+	width: 560px;
+}
+
 .notactive {
 	color: lightgray;
 }
@@ -40,4 +45,14 @@ td {
 td > p {
 	margin: 2px;
 	font-size: 10px;
+}
+
+h1 {
+	text-align: center;
+	color: darkblue;
+	border-bottom: 5px solid lightblue;
+}
+
+a {
+	text-decoration: none;
 }
