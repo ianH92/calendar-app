@@ -4,10 +4,16 @@
 		<meta charset="utf-8">
 		<title>Event view</title>
 		<link href="/stylesheets/eventStyle.css" type="text/css" rel="stylesheet">
+		<link href="/stylesheets/headerStyle.css" type="text/css" rel="stylesheet">
 	</head>
 	<body>
 		<a href="/" rel="homepage" title="homepage"><h1>{{title}}</h1></a>
-		<div>
+		<div id="links">
+			<a href="/">HOME PAGE</a>
+			<a href="/about">ABOUT</a>
+			<a href="/events/createEvent">CREATE EVENT</a>
+		</div>
+		<div id="event">
 			<p><strong>Event Name: </strong>{{name}}</p>
 			<p><strong>Event Priority: </strong>{{priority}}</p>
 			{{#if date}}
