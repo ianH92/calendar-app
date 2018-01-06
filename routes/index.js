@@ -12,7 +12,7 @@ router.get('/about', function(req, res, next) {
 	res.send('This is the about page');
 });
 
-router.get('/getcalendar/:year/:month', calendarController.createCalendarJSON);
+router.get('/getcalendar/:year/:month/:day', calendarController.createCalendarJSON);
 
 module.exports = router;
 
