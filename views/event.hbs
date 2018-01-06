@@ -6,14 +6,18 @@
 		<link href="/stylesheets/eventStyle.css" type="text/css" rel="stylesheet">
 	</head>
 	<body>
-		<h1>{{title}}</h1>
-		<p>{{name}}</p>
-		<p>Priority: {{priority}}</p>
-		{{#if date}}
-			<p>Day: {{due}}</p>
-		{{/if}}
-		{{#if description}}
-			<p>Description: {{{description}}}</p>
-		{{/if}}
+		<a href="/" rel="homepage" title="homepage"><h1>{{title}}</h1></a>
+		<div>
+			<p><strong>Event Name: </strong>{{name}}</p>
+			<p><strong>Event Priority: </strong>{{priority}}</p>
+			{{#if date}}
+				<p><strong>Day: </strong><span id="due">{{date}}</span></p>
+				<p><strong>Days Left: </strong><span id="left"></span></p>
+			{{/if}}
+			{{#if description}}
+				<p><strong>Description: </strong>{{{description}}}</p>
+			{{/if}}
+		</div>
+		<script src="/javascripts/eventView.js"></script>
 	</body>
 </html>
