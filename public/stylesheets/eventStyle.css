@@ -1,18 +1,8 @@
-h1 {
-	color: darkblue;
-	text-align: center;
-	border-bottom: 5px solid lightblue;
-}
-
 p {
 	width: 250px;
 }
 
-div {
+#event {
 	width: 260px;
 	margin: 0 auto;
-}
-
-a {
-	text-decoration: none;
 }

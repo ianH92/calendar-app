@@ -19,7 +19,7 @@ exports.eventDisplay = function(req, res) {
 };
 
 exports.createEvent = function(req, res) {
-	res.render('createEvent');
+	res.render('createEvent', {title: 'Event Calendar'});
 }
 
 exports.createEventPost = [
