@@ -147,6 +147,10 @@ xmlReq.onload = function() {
 			} else {
 				td.setAttribute('class', 'full active');
 			}
+			
+			td.addEventListener('click', () => {
+				window.location.href = '/day/' + year + '/' + month + '/' + td.firstChild.textContent;
+			});
 		} else {
 			td.setAttribute('class', 'full notactive');
 		}

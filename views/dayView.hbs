@@ -3,13 +3,22 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Day view</title>
-		
+		<link href="/stylesheets/headerStyle.css" type="text/css" rel="stylesheet">
+		<link href="/stylesheets/dayStyle.css" type="text/css" rel="stylesheet">
 	</head>
 	
 	<body>
-		<h1>{{title}}</h1>
-		{{#each events}}
-			<p>Name: {{this.name}}</p>
-		{{/each}}
+		<a href="/" rel="homepage" title="homepage"><h1>{{title}}</h1></a>
+		<div id="links">
+			<a href="/">HOME PAGE</a>
+			<a href="/about">ABOUT</a>
+			<a href="/events/createEvent">CREATE EVENT</a>
+		</div>
+		<h2>{{dayName}}</h2>
+		<div>
+			{{#each events}}
+				<p>Name: {{this.name}}</p>
+			{{/each}}
+		</div>
 	</body>
 <html>
