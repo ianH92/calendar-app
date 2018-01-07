@@ -111,6 +111,10 @@ var genCal = function(cal) {
 		for(let j = 0; j < day['events'].length; j++) {
 			let evnt = document.createElement('p');
 			evnt.textContent = day['events'][j].name;
+			
+			evnt.setAttribute('class', 'event');
+			evnt.setAttribute('id', day['events'][j]._id);
+			
 			td.appendChild(evnt);
 		}
 		
@@ -138,6 +142,10 @@ xmlReq.onload = function() {
 		for(let j = 0; j < day['events'].length; j++) {
 			let evnt = document.createElement('p');
 			evnt.textContent = day['events'][j].name;
+			
+			evnt.setAttribute('class', 'event');
+			evnt.setAttribute('id', day['events'][j]._id);
+			
 			td.appendChild(evnt);
 		}
 		
