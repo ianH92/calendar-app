@@ -13,6 +13,10 @@ EventSchema.virtual('url').get(function() {
 	return('/events/' + this._id);
 });
 
+EventSchema.virtual('url_todo').get(function() {
+	return('/todo/' + this._id);
+});
+
 EventSchema.virtual('date').get(function() {
 	if(eventDate === null) { return ''; }
 	

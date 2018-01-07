@@ -2,14 +2,9 @@
 <html lang="en-US">
 	<head>
 		<meta charset="utf-8">
-		<title>Event view</title>
+		<title>ToDo view</title>
 		<link href="/stylesheets/eventStyle.css" type="text/css" rel="stylesheet">
 		<link href="/stylesheets/headerStyle.css" type="text/css" rel="stylesheet">
-		<style>
-			p {
-			width: 250px;
-			}
-		</style>
 	</head>
 	<body>
 		<a href="/" rel="homepage" title="homepage"><h1>{{title}}</h1></a>
@@ -20,16 +15,11 @@
 			<a href="/todo/createTodo">CREATE TODO</a>
 		</div>
 		<div id="event">
-			<p><strong>Event Name: </strong>{{name}}</p>
-			<p><strong>Event Priority: </strong>{{priority}}</p>
-			{{#if date}}
-				<p><strong>Day: </strong><span id="due">{{date}}</span></p>
-				<p><strong>Days Left: </strong><span id="left"></span></p>
-			{{/if}}
+			<p><strong>TODO Name: </strong>{{name}}</p>
+			<p><strong>TODO Priority: </strong>{{priority}}</p>
 			{{#if description}}
 				<p><strong>Description: </strong>{{description}}</p>
 			{{/if}}
 		</div>
-		<script src="/javascripts/eventView.js"></script>
 	</body>
 </html>

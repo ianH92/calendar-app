@@ -2,7 +2,7 @@
 <html lang="en-US">
 	<head>
 		<meta charset="UTF-8">
-		<title>Create an event</title>
+		<title>Create a TODO</title>
 		<link href="/stylesheets/createEventStyle.css" type="text/css" rel="stylesheet">
 		<link href="/stylesheets/headerStyle.css" type="text/css" rel="stylesheet">
 	</head>
@@ -15,16 +15,13 @@
 			<a href="/events/createEvent">CREATE EVENT</a>
 			<a href="/todo/createTodo">CREATE TODO</a>
 		</div>
-		<h2>Event Information</h2>
+		<h2>Enter TODO Information</h2>
 		<fieldset>
 			<form method="post">
 				<div>
 					<label for="name">Event Name</label>
 					<input type="text" id="name" name="name" required minlength="3" maxlength="150">
 				</div>
-				<div>
-					<label for="date">Event Date</label>
-					<input type="date" id="date" name="date" required min="1896-12-31" max="2096-12-31">
 				<div>
 					<label for="priority">Event Priority</label>
 					<select id ="priority" name="priority">
@@ -40,15 +37,10 @@
 					<textarea id="description" name="description" maxlength="250">Enter description here...</textarea>
 				</div>
 				<div>
-					<button type="submit">Create Event</button>
+					<button type="submit">Create TODO</button>
 				</div>
-				<div>
-					<label for="currdate" class="hidden"></label>
-					<input type="text" class="hidden" id="currdate" name="currdate">
-				<div>
 			</form>
 		</fieldset>
-		<script src="/javascripts/createEventScript.js"></script>
 	</body>
 </html>
 		
