@@ -3,6 +3,17 @@
 	width: 560px;
 }
 
+.dayNum {
+	margin: 0 auto;
+	width: 30px;
+	border-radius: 5px;
+}
+
+.dayNum:hover {
+	background-color: #75C9EA;
+	color: white;
+}
+
 .notactive {
 	color: lightgray;
 }
@@ -16,13 +27,16 @@
 }
 
 .event {
-	border: 1px solid lightblue;
 	background-color: #5169B8;
 	border-radius: 5px;
 	margin-top: 2px;
 	margin-bottom: 2px;
 	color: white;
 	padding: 2px;
+}
+
+.event:hover {
+	background-color: #75C9EA;
 }
 
 table {
@@ -55,8 +69,8 @@ td {
 td > p {
 	margin: 2px;
 	font-size: 12px;
+	width: 70px;
 }
 .today {
 	background-color: #BFC9E7;
-	border: 2px solid #5169B8;
 }

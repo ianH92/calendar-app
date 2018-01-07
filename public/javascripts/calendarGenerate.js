@@ -106,14 +106,21 @@ var genCal = function(cal) {
 			td.removeChild(td.firstChild);
 		}
 		
-		td.textContent = day['day'];
+		let num = document.createElement('p');
+		num.textContent = day['day'];
+		num.setAttribute('class', 'dayNum');
+		td.appendChild(num);
 		
 		for(let j = 0; j < day['events'].length; j++) {
+			
 			let evnt = document.createElement('p');
 			evnt.textContent = day['events'][j].name;
-			
 			evnt.setAttribute('class', 'event');
-			evnt.setAttribute('id', day['events'][j]._id);
+			
+			evnt.addEventListener('click', () => {
+				console.log('hereeeee');
+				window.location.href = '/events/' + day['events'][j]._id;
+			});
 			
 			td.appendChild(evnt);
 		}
@@ -124,6 +131,10 @@ var genCal = function(cal) {
 			} else {
 				td.setAttribute('class', 'full active');
 			}
+			
+			td.firstChild.addEventListener('click', () => {
+				window.location.href = '/day/' + year + '/' + month + '/' + td.firstChild.textContent;
+			});
 		} else {
 			td.setAttribute('class', 'full notactive');
 		}
@@ -137,14 +148,21 @@ xmlReq.onload = function() {
 		let day = cal[i];
 		let td = document.getElementById(i + 1);
 		
-		td.textContent = day['day'];
+		let num = document.createElement('p');
+		num.textContent = day['day'];
+		num.setAttribute('class', 'dayNum');
+		td.appendChild(num);
 		
 		for(let j = 0; j < day['events'].length; j++) {
 			let evnt = document.createElement('p');
 			evnt.textContent = day['events'][j].name;
 			
 			evnt.setAttribute('class', 'event');
-			evnt.setAttribute('id', day['events'][j]._id);
+			
+			evnt.addEventListener('click', () => {
+				console.log('hereeeee');
+				window.location.href = '/events/' + day['events'][j]._id;
+			});
 			
 			td.appendChild(evnt);
 		}
@@ -156,7 +174,7 @@ xmlReq.onload = function() {
 				td.setAttribute('class', 'full active');
 			}
 			
-			td.addEventListener('click', () => {
+			td.firstChild.addEventListener('click', () => {
 				window.location.href = '/day/' + year + '/' + month + '/' + td.firstChild.textContent;
 			});
 		} else {
