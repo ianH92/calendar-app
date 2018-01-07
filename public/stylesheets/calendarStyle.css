@@ -1,8 +1,48 @@
-#calendar {
+#page {
+	width: 835px;
 	margin: 0 auto;
-	width: 560px;
 }
 
+#calendar {
+	margin-left: 0;
+	width: 560px;
+	float: left;
+}
+
+#todos {
+	box-sizing: border-box;
+	width: 300px;
+	margin-left: 600px;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+#todoh3 {
+	text-align: center;
+	width: 300px;
+}
+
+h3 {
+	text-align: center;
+}
+
+#titles {
+	display: inline-block;
+}
+
+.todo {
+	text-align: center;
+	box-sizing: border-box;
+	border: 1px solid black;
+	border-radius: 4px;
+	background-color: #5169B8;
+	color: white;
+	width: 80px;
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	font-size: 12px;
+}
 .dayNum {
 	margin: 0 auto;
 	width: 30px;
