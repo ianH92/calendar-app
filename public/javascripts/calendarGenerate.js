@@ -28,6 +28,13 @@ prevMonth.textContent = '< ' +abbrMon[pMonth];
 currMonth.textContent =  months[month] + ' ' + year;
 nextMonth.textContent = abbrMon[nMonth] + ' >';
 
+let todos = document.getElementsByClassName('todo');
+for(let i = 0; i < todos.length; i++) {
+	todos[i].addEventListener('click', () => {
+		window.location.href = '/todo/' + todos[i].getAttribute('id');
+	});
+}
+
 prevMonth.addEventListener('click', function() {
 	let xmlReq2 = new XMLHttpRequest();
 	
