@@ -3,6 +3,12 @@ p {
 }
 
 #event {
+	margin: 10px;
+	padding: 2px;
+	border-radius: 7px;
+	background-color: #5169B8;
+	border: 2px solid lightblue;
+	color: white;
 	width: 260px;
 	margin: 0 auto;
 }
