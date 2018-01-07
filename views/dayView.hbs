@@ -15,10 +15,20 @@
 			<a href="/events/createEvent">CREATE EVENT</a>
 		</div>
 		<h2>{{dayName}}</h2>
-		<div>
+		<div id="events">
 			{{#each events}}
-				<p>Name: {{this.name}}</p>
+				<div id={{this._id}} class="event">
+					<p><strong>Name: </strong>{{this.name}}</p>
+					<p><strong>Priority: </strong>{{this.priority}}</p>
+					{{#if this.eventDate}}
+						<p><strong>Event Date: </strong>{{this.eventDate}}</p>
+					{{/if}}
+					{{#if this.description}}
+						<p><strong>Description: </strong>{{this.description}}</p>
+					{{/if}}
+				</div>
 			{{/each}}
 		</div>
+		<script src="/javascripts/dayScript.js"></script>
 	</body>
-<html>
+</html>

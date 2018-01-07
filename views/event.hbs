@@ -5,6 +5,11 @@
 		<title>Event view</title>
 		<link href="/stylesheets/eventStyle.css" type="text/css" rel="stylesheet">
 		<link href="/stylesheets/headerStyle.css" type="text/css" rel="stylesheet">
+		<style>
+			p {
+			width: 250px;
+			}
+		</style>
 	</head>
 	<body>
 		<a href="/" rel="homepage" title="homepage"><h1>{{title}}</h1></a>
@@ -21,7 +26,7 @@
 				<p><strong>Days Left: </strong><span id="left"></span></p>
 			{{/if}}
 			{{#if description}}
-				<p><strong>Description: </strong>{{{description}}}</p>
+				<p><strong>Description: </strong>{{description}}</p>
 			{{/if}}
 		</div>
 		<script src="/javascripts/eventView.js"></script>

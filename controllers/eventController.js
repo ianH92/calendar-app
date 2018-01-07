@@ -10,9 +10,11 @@ exports.eventDisplay = function(req, res) {
 		if(err) { 
 			res.render('error at event display', {error: err});
 		} else {
+			let d = (eventDetails.eventDate === null) ? null : eventDetails.eventDate.toUTCString();
+				
 			res.render('event',
 				{title: 'Event Calendar', name: eventDetails.name, priority: eventDetails.priority, 
-				date: eventDetails.eventDate.toUTCString(), description: eventDetails.description
+				date: d, description: eventDetails.description
 			});
 		}
 	});
