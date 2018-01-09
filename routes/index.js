@@ -9,7 +9,7 @@ router.get('/', indexController.homePage);
 router.get('/home', indexController.homePage);
 
 router.get('/about', function(req, res, next) {
-	res.send('This is the about page');
+	res.render('about', {title: 'Event Calendar'});
 });
 
 router.get('/getcalendar/:year/:month/:day', calendarController.createCalendarJSON);
