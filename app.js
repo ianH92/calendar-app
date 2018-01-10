@@ -41,17 +41,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', index);
-app.use('/users', users);
-app.use('/events', events);
-app.use('/day', days);
-app.use('/todo', todo);
-
-let secretString = mongoosePassword.secret();
-app.use(expressSession({secret: secretString}));
-app.use(passport.initialize());
-app.use(passport.session());
-
 //Creating the local strategy for passport.js
 passport.use(new LocalStrategy.Strategy(
 	function(username, password, done) {
@@ -64,7 +53,9 @@ passport.use(new LocalStrategy.Strategy(
 			} else if(user === null) {
 				return done(null, false);
 			} else {
-				return (password === user.password) ? done(null, user) : done(null, false);
+				console.log('got to here');
+				console.log(password === user.passwordHash);
+				return (password === user.passwordHash) ? done(null, user) : done(null, false);
 			}
 		});
 	}
@@ -76,9 +67,20 @@ passport.serializeUser(function(user, done) {
 
 passport.deserializeUser(function(id, done) {
 	User.findById(id, function(error, user) {
-		done(err, user);
+		done(error, user);
 	});
 });
+
+let secretString = mongoosePassword.secret();
+app.use(expressSession({secret: secretString, resave: true, saveUninitialized: true}));
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use('/', index);
+app.use('/users', users);
+app.use('/events', events);
+app.use('/day', days);
+app.use('/todo', todo);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
