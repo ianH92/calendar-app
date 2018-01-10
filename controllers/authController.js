@@ -1,6 +1,7 @@
 var User = require('../models/User.js');
 const { body, validationResult } = require('express-validator/check');
 const { sanitizeBody } = require('express-validator/filter');
+var bcrypt = require('bcrypt');
 
 exports.signup = [
 	body('username', 'Username is required').isLength({min: 3, max: 100}).withMessage('Username' +
@@ -23,18 +24,21 @@ exports.signup = [
 			if(error) { console.log('error at signup'); }
 			
 			if(user === null) {
-				let newUser = new User({
-					username: req.body.username,
-					passwordHash: req.body.password,
-				});
 				
-				newUser.save(function(error, savedUser) {
-					if(error) { 
-						res.render('signup', { error: 'save error'});
+				bcrypt.hash(req.body.password, 10, function(err, hashedPassword) {
+					let newUser = new User({
+						username: req.body.username,
+						passwordHash: hashedPassword,
+					});
+					
+					newUser.save(function(error, savedUser) {
+						if(error) { 
+							res.render('signup', { error: 'save error'});
+							return;
+						} 
+						res.render('login', {msg: 'Signup successful, you can log in now'});
 						return;
-					} 
-					res.render('login', {msg: 'Signup successful, you can log in now'});
-					return;
+					});
 				});
 			} else {
 				res.render('signup', {error: 'username already exists'});

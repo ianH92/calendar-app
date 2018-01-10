@@ -7,6 +7,7 @@ let bodyParser = require('body-parser');
 let passport = require('passport');
 let LocalStrategy = require('passport-local');
 let expressSession = require('express-session');
+let bcrypt = require('bcrypt');
 
 let index = require('./routes/index');
 let users = require('./routes/users');
@@ -50,7 +51,14 @@ passport.use(new LocalStrategy.Strategy(
 			} else if(user === null) {
 				return done(null, false);
 			} else {
-				return (password === user.passwordHash) ? done(null, user) : done(null, false);
+				bcrypt.compare(password, user.passwordHash, function(error, res) {
+					if(error) { return done(error); }
+					if(res) { 
+						return done(null, user); 
+					} else {
+						return done(null, false);
+					}
+				});
 			}
 		});
 	}
