@@ -25,6 +25,7 @@
 				<div>
 					<label for="date">Event Date</label>
 					<input type="date" id="date" name="date" required min="1896-12-31" max="2096-12-31">
+				</div>
 				<div>
 					<label for="priority">Event Priority</label>
 					<select id ="priority" name="priority">
@@ -40,12 +41,12 @@
 					<textarea id="description" name="description" maxlength="250">Enter description here...</textarea>
 				</div>
 				<div>
-					<button type="submit">Create Event</button>
-				</div>
-				<div>
 					<label for="currdate" class="hidden"></label>
 					<input type="text" class="hidden" id="currdate" name="currdate">
 				<div>
+				<div>
+					<button type="submit">Create Event</button>
+				</div>
 			</form>
 		</fieldset>
 		<script src="/javascripts/createEventScript.js"></script>

@@ -12,24 +12,33 @@ exports.signup = [
 	sanitizeBody('password').trim().escape(),
 
 	function(req, res, next) {
+		let errors = validationResult(req);
+		
+		if(!errors.isEmpty()) {
+			res.render('signup', {errors: errors.array()});
+			return;
+		}
 		
 		User.findOne({username: req.body.username}, function(error, user) {
 			if(error) { console.log('error at signup'); }
+			
 			if(user === null) {
 				let newUser = new User({
 					username: req.body.username,
-					password: req.body.password,
+					passwordHash: req.body.password,
 				});
 				
 				newUser.save(function(error, savedUser) {
-					if(error) {
-						res.render('/signup');
-					} else {
-						res.render('/login');
-					}
+					if(error) { 
+						res.render('signup', { error: 'save error'});
+						return;
+					} 
+					res.render('login', {msg: 'Signup successful, you can log in now'});
+					return;
 				});
 			} else {
-				res.render('signup');
+				res.render('signup', {error: 'username already exists'});
+				return;
 			}
 		});
 	}
