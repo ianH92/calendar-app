@@ -44,17 +44,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 //Creating the local strategy for passport.js
 passport.use(new LocalStrategy.Strategy(
 	function(username, password, done) {
-		console.log('right here');
-		console.log('post username = ' + username);
-		console.log('password = ' + password);
 		User.findOne({username: username}, function(error, user) {
 			if(error) {
 				return done(error);
 			} else if(user === null) {
 				return done(null, false);
 			} else {
-				console.log('got to here');
-				console.log(password === user.passwordHash);
 				return (password === user.passwordHash) ? done(null, user) : done(null, false);
 			}
 		});
