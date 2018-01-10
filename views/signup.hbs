@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en-US">
+	<head>
+		<meta charset="UTF-8">
+		<title>Signup Page for Event Calendar</title>
+	</head>
+	
+	<body>
+		<h2>Signup to Event Calendar</h2>
+		<fieldset>
+			<form method="post">
+				<div>
+					<label for="username">Username: </label>
+					<input type="text" id="username" name="username" required minlength="3" maxlength="100">
+				</div>
+				<div>
+					<label for="password">Password: </label>
+					<input type="text" id="password" name="password" required min="8" max="100">
+				</div>
+			</form>
+		</fieldset>
+		<p>Already signed up? <a href="/login">Login here</a></p>
+	</body>
+</html>
