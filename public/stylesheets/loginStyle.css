@@ -1,0 +1,56 @@
+h1 {
+	text-align: center;
+	color: darkblue;
+	border-bottom: 5px solid lightblue;
+	margin-bottom: 5px;
+}
+
+h2 {
+	font-size: 14px;
+	text-align: center;
+}
+
+p {
+	text-align: center;
+}
+
+.msg {
+	color: green;
+}
+
+.err {
+	color: red;
+}
+
+label {
+	text-align: right;
+	display: inline-block;
+	width: 80px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	
+	margin-left: 0;
+	margin-right: 2px;
+}
+
+input {
+	box-sizing: border-box;
+	width: 250px;
+}
+
+form {
+	box-sizing: border-box;
+	width: 360px;
+	border: 1px solid lightgray;
+	margin: 0 auto;
+}
+
+fieldset {
+	border: 0;
+}
+
+button {
+	width: 55px;
+	margin-left: 153px;
+	margin-bottom: 5px;
+}
