@@ -3,18 +3,23 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Sign up Page for Event Calendar</title>
+		<link href="/stylesheets/loginStyle.css" type="text/css" rel="stylesheet">
 	</head>
 	
 	<body>
-		<h2>Signup to Event Calendar</h2>
-		{{#each errors}}
-			<p class="err">{{this.msg}}</p>
-		{{/each}}
-		{{#if error}}
-			<p class="err">{{error}}</p>
-		{{/if}}
+		<h1>Event Calendar</h1>
 		<fieldset>
 			<form method="post">
+				<p>Username must be between 3-100 characters in length.</p>
+				<p>The username must also be unique.</p>
+				<p>Password must be between 8-100 characters in length.
+				<h2>Signup to Event Calendar</h2>
+				{{#each errors}}
+					<p class="err">{{this.msg}}</p>
+				{{/each}}
+				{{#if error}}
+					<p class="err">{{error}}</p>
+				{{/if}}
 				<div>
 					<label for="username">Username: </label>
 					<input type="text" id="username" name="username" required minlength="3" maxlength="100">
