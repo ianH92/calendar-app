@@ -19,13 +19,14 @@ router.get('/about', auth.authenticate, function(req, res, next) {
 });
 
 router.get('/login', function(req, res, next) {
-	res.render('login');
+	res.render('login', { msg: req.flash('msg') });;
 });
 
 router.post('/login', passport.authenticate('local', {successRedirect: '/home', failureRedirect: '/login'}));
 
 router.get('/logout', function(req, res, next) {
 		req.logout();
+		req.flash('msg', 'Logout successful');
 		res.redirect('/login');
 });
 

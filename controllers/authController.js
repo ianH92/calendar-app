@@ -21,7 +21,9 @@ exports.signup = [
 		}
 		
 		User.findOne({username: req.body.username}, function(error, user) {
-			if(error) { console.log('error at signup'); }
+			if(error) { 
+				res.render('signup', { error: 'Database query error, try again.' });
+			}
 			
 			if(user === null) {
 				
@@ -33,15 +35,17 @@ exports.signup = [
 					
 					newUser.save(function(error, savedUser) {
 						if(error) { 
-							res.render('signup', { error: 'save error'});
+							res.render('msg', { error: 'Error saving user to database.'});
 							return;
-						} 
-						res.render('login', {msg: 'Signup successful, you can log in now'});
+						}
+						//User registered
+						req.flash('msg', 'Sign up was successful, you may now log in.');
+						res.redirect('/login');
 						return;
 					});
 				});
 			} else {
-				res.render('signup', {error: 'username already exists'});
+				res.render('signup', {error: 'Error: Username already exists.'});
 				return;
 			}
 		});
