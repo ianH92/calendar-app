@@ -8,6 +8,7 @@ let passport = require('passport');
 let LocalStrategy = require('passport-local');
 let expressSession = require('express-session');
 let bcrypt = require('bcrypt');
+let flash = require('connect-flash');
 
 let index = require('./routes/index');
 let users = require('./routes/users');
@@ -41,6 +42,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(flash());
 
 //Creating the local strategy for passport.js
 passport.use(new LocalStrategy.Strategy(
