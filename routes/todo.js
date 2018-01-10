@@ -1,11 +1,14 @@
 var express = require('express');
 var router = express.Router();
+let passport = require('passport');
+
 var todoController = require('../controllers/todoController.js');
+let auth = require('./authent.js');
 
-router.get('/createTodo', todoController.createTodo);
+router.get('/createTodo', auth.authenticate, todoController.createTodo);
 
-router.post('/createTodo', todoController.createTodoPost);
+router.post('/createTodo', auth.authenticate, todoController.createTodoPost);
 
-router.get('/:todoID', todoController.displayTodo);
+router.get('/:todoID', auth.authenticate, todoController.displayTodo);
 
 module.exports = router;

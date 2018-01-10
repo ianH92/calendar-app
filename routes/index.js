@@ -5,15 +5,16 @@ let passport = require('passport');
 var indexController = require('../controllers/indexController');
 var calendarController = require('../controllers/calendarController');
 var authController = require('../controllers/authController');
+let auth = require('./authent.js');
 
 /* GET home page. */
 router.get('/', function(req, res) {
 	res.redirect('/login');
 });
 
-router.get('/home', indexController.homePage);
+router.get('/home', auth.authenticate, indexController.homePage);
 
-router.get('/about', function(req, res, next) {
+router.get('/about', auth.authenticate, function(req, res, next) {
 	res.render('about', {title: 'Event Calendar'});
 });
 
@@ -23,6 +24,10 @@ router.get('/login', function(req, res, next) {
 
 router.post('/login', passport.authenticate('local', {successRedirect: '/home', failureRedirect: '/login'}));
 
+router.get('/logout', function(req, res, next) {
+		req.logout();
+		res.redirect('/login');
+});
 
 router.get('/signup', function(req, res, next) {
 	res.render('signup');
@@ -31,6 +36,6 @@ router.get('/signup', function(req, res, next) {
 	
 router.post('/signup', authController.signup);
 	
-router.get('/getcalendar/:year/:month/:day', calendarController.createCalendarJSON);
+router.get('/getcalendar/:year/:month/:day', auth.authenticate, calendarController.createCalendarJSON);
 
 module.exports = router;
