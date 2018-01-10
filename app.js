@@ -55,6 +55,9 @@ app.use(passport.session());
 //Creating the local strategy for passport.js
 passport.use(new LocalStrategy.Strategy(
 	function(username, password, done) {
+		console.log('right here');
+		console.log('post username = ' + username);
+		console.log('password = ' + password);
 		User.findOne({username: username}, function(error, user) {
 			if(error) {
 				return done(error);

@@ -7,6 +7,12 @@
 	
 	<body>
 		<h2>Signup to Event Calendar</h2>
+		{{#each errors}}
+			<p class="err">{{this.msg}}</p>
+		{{/each}}
+		{{#if error}}
+			<p class="err">{{error}}</p>
+		{{/if}}
 		<fieldset>
 			<form method="post">
 				<div>
@@ -16,6 +22,9 @@
 				<div>
 					<label for="password">Password: </label>
 					<input type="text" id="password" name="password" required min="8" max="100">
+				</div>
+				<div>
+					<button type="submit">Signup</button>
 				</div>
 			</form>
 		</fieldset>

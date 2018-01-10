@@ -7,15 +7,21 @@
 	
 	<body>
 		<h2>Login to Event Calendar</h2>
+		{{#if msg}}
+			<p>{{msg}}</p>
+		{{/if}}
 		<fieldset>
 			<form method="post">
 				<div>
 					<label for="username">Username: </label>
-					<input type="text" id="username" name="username" required minlength="3" maxlength="100">
+					<input type="text" id="username" name="username" minlength="3" maxlength="100" required>
 				</div>
 				<div>
 					<label for="password">Password: </label>
-					<input type="text" id="password" name="password" required min="8" max="100">
+					<input type="text" id="password" name="password" minlength="8" maxlength="100" required>
+				</div>
+				<div>
+					<button type="submit">Login</button>
 				</div>
 			</form>
 		</fieldset>
