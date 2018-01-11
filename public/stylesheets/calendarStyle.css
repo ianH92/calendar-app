@@ -35,7 +35,7 @@ h3 {
 	box-sizing: border-box;
 	border: 1px solid black;
 	border-radius: 4px;
-	background-color: #5169B8;
+	background-color: #4f8ec1;
 	color: white;
 	width: 80px;
 	margin-left: 10px;
@@ -73,7 +73,7 @@ h3 {
 }
 
 .event {
-	background-color: #5169B8;
+	background-color: #4f8ec1;
 	border-radius: 5px;
 	margin-top: 2px;
 	margin-bottom: 2px;
@@ -118,6 +118,11 @@ td > p {
 	font-size: 12px;
 	width: 70px;
 }
+
+p {
+	overflow: hidden;
+}
+
 .today {
 	background-color: #BFC9E7;
 }
