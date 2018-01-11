@@ -4,10 +4,18 @@
 		<meta charset="UTF-8">
 		<title>Login Page for Event Calendar</title>
 		<link href="/stylesheets/loginStyle.css" type="text/css" rel="stylesheet">
+		<link href="/stylesheets/headerStyle.css" type="text/css" rel="stylesheet">
 	</head>
 	
 	<body>
-		<h1>Event Calendar</h1>
+		<a href="/" rel="homepage" title="homepage"><h1>Event Calendar</h1></a>
+		<div id="links">
+			<a href="/home">HOME PAGE</a>
+			<a href="/about">ABOUT</a>
+			<a href="/events/createEvent">CREATE EVENT</a>
+			<a href="/todo/createTodo">CREATE TODO</a>
+			<a href="/logout/">LOGOUT</a>
+		</div>
 		<fieldset>
 			<form method="post">
 				<h2>Login to Event Calendar</h2>
@@ -27,6 +35,6 @@
 				</div>
 			</form>
 		</fieldset>
-		<p>No account? <a href="/signup">Sign up here</a></p>
+		<p>No account? <a class="keeplink" href="/signup">Sign up here</a></p>
 	</body>
 </html>

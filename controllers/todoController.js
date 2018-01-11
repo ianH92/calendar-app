@@ -13,7 +13,7 @@ exports.displayTodo = function(req, res) {
 			//Check if todo belongs to the authenticated user
 			if(req.user.id == todoDetails.user) {
 				res.render('todo',
-					{title: 'Event Calendar', name: todoDetails.name, priority: todoDetails.priority, 
+					{name: todoDetails.name, priority: todoDetails.priority, 
 					description: todoDetails.description
 				});
 			} else {
@@ -24,7 +24,7 @@ exports.displayTodo = function(req, res) {
 };
 
 exports.createTodo = function(req, res) {
-	res.render('createTodo', {title: 'Event Calendar'});
+	res.render('createTodo');
 };
 
 exports.createTodoPost = [

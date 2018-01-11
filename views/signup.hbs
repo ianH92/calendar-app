@@ -4,10 +4,18 @@
 		<meta charset="UTF-8">
 		<title>Sign up Page for Event Calendar</title>
 		<link href="/stylesheets/loginStyle.css" type="text/css" rel="stylesheet">
+		<link href="/stylesheets/headerStyle.css" type="text/css" rel="stylesheet">
 	</head>
 	
 	<body>
-		<h1>Event Calendar</h1>
+		<a href="/" rel="homepage" title="homepage"><h1>Event Calendar</h1></a>
+		<div id="links">
+			<a href="/home">HOME PAGE</a>
+			<a href="/about">ABOUT</a>
+			<a href="/events/createEvent">CREATE EVENT</a>
+			<a href="/todo/createTodo">CREATE TODO</a>
+			<a href="/logout/">LOGOUT</a>
+		</div>
 		<fieldset>
 			<form method="post">
 				<p>Username must be between 3-100 characters in length.</p>
@@ -33,6 +41,6 @@
 				</div>
 			</form>
 		</fieldset>
-		<p>Already signed up? <a href="/login">Login here</a></p>
+		<p>Already signed up? <a class="keeplink" href="/login">Login here</a></p>
 	</body>
 </html>

@@ -15,11 +15,11 @@ router.get('/', function(req, res) {
 router.get('/home', auth.authenticate, indexController.homePage);
 
 router.get('/about', auth.authenticate, function(req, res, next) {
-	res.render('about', {title: 'Event Calendar'});
+	res.render('about');
 });
 
 router.get('/login', function(req, res, next) {
-	res.render('login', { msg: req.flash('msg') });;
+	res.render('login', { msg: req.flash('msg')});;
 });
 
 router.post('/login', passport.authenticate('local', {successRedirect: '/home', failureRedirect: '/login'}));
