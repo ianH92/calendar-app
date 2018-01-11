@@ -6,6 +6,6 @@ exports.homePage = function(req, res) {
 	Events.find({user: user, eventDate: null}, 'name priority')
 	.sort({priority: +1, name: -1})
 	.exec(function(error, todoList) {
-		res.render('home', {title: 'Event Calendar', todos: todoList});
+		res.render('home', {todos: todoList});
 	});
 }

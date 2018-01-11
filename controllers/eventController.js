@@ -15,7 +15,7 @@ exports.eventDisplay = function(req, res) {
 			//Check if the event requested belongs to the authenticated user
 			if(req.user.id == eventDetails.user) {
 				res.render('event',
-					{title: 'Event Calendar', name: eventDetails.name, priority: eventDetails.priority, 
+					{name: eventDetails.name, priority: eventDetails.priority, 
 					date: d, description: eventDetails.description
 				});
 			} else {
@@ -26,7 +26,7 @@ exports.eventDisplay = function(req, res) {
 };
 
 exports.createEvent = function(req, res) {
-	res.render('createEvent', {title: 'Event Calendar'});
+	res.render('createEvent');
 }
 
 exports.createEventPost = [

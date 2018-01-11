@@ -21,8 +21,7 @@ exports.dayDisplay = function(req, res) {
 		let months = ['January', 'February', 'March', 'April', 'May', 'June', 
 				  'July', 'August', 'September', 'October', 'November', 'December'];
 				  
-		res.render('dayView', {title: 'Event Calendar',
-							   dayName: (months[month] + ' ' + day + ', ' + year),
+		res.render('dayView', {dayName: (months[month] + ' ' + day + ', ' + year),
 							   events: event_list});
 	});
 }
