@@ -1,7 +1,7 @@
 var Event = require('../models/Event.js');
 
 exports.dayDisplay = function(req, res) {
-	let user = "5a444deae24862450047baab";
+	let user = req.user.id;
 	
 	let year = req.params.year;
 	let month = req.params.month;

@@ -1,7 +1,7 @@
 var Events = require('../models/Event.js');
 
 exports.homePage = function(req, res) {
-	let user = '5a444deae24862450047baab';
+	let user = req.user.id;
 	
 	Events.find({user: user, eventDate: null}, 'name priority')
 	.sort({priority: +1, name: -1})

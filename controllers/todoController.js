@@ -9,11 +9,16 @@ exports.displayTodo = function(req, res) {
 		if(err) { 
 			res.render('error at event display', {error: err});
 		} else {
-				
-			res.render('todo',
-				{title: 'Event Calendar', name: todoDetails.name, priority: todoDetails.priority, 
-				description: todoDetails.description
-			});
+			
+			//Check if todo belongs to the authenticated user
+			if(req.user.id == todoDetails.user) {
+				res.render('todo',
+					{title: 'Event Calendar', name: todoDetails.name, priority: todoDetails.priority, 
+					description: todoDetails.description
+				});
+			} else {
+				res.send('This todo does not belong to the user');
+			}
 		}
 	});
 };
@@ -39,7 +44,7 @@ exports.createTodoPost = [
 		if(errors.isEmpty()) {
 			let newEvent = new Event({
 				name: req.body.name,
-				user: '5a444deae24862450047baab',
+				user: req.user.id,
 				priority: req.body.priority,
 				description: req.body.description,
 			});

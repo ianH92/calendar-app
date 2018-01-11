@@ -11,11 +11,16 @@ exports.eventDisplay = function(req, res) {
 			res.render('error at event display', {error: err});
 		} else {
 			let d = (eventDetails.eventDate === null) ? null : eventDetails.eventDate.toUTCString();
-				
-			res.render('event',
-				{title: 'Event Calendar', name: eventDetails.name, priority: eventDetails.priority, 
-				date: d, description: eventDetails.description
-			});
+			
+			//Check if the event requested belongs to the authenticated user
+			if(req.user.id == eventDetails.user) {
+				res.render('event',
+					{title: 'Event Calendar', name: eventDetails.name, priority: eventDetails.priority, 
+					date: d, description: eventDetails.description
+				});
+			} else {
+				res.send('This event does not belong to this user.');
+			}
 		}
 	});
 };
@@ -45,7 +50,7 @@ exports.createEventPost = [
 		if(errors.isEmpty()) {
 			let newEvent = new Event({
 				name: req.body.name,
-				user: '5a444deae24862450047baab',
+				user: req.user.id,
 				priority: req.body.priority,
 				eventDate: req.body.date,
 				created: req.body.currdate,
