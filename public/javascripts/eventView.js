@@ -1,3 +1,9 @@
+/* Author: Ian (ianH92)
+ * Date: January 12th, 2018
+ * 
+ * Calculate the days left between the event due date and the current day on the user's browser.
+ */
+
 let due = document.getElementById('due');
 let left = document.getElementById('left');
 let endDate = new Date(due.textContent);

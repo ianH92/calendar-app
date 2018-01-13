@@ -1,5 +1,13 @@
+/* Author: Ian (ianH92)
+ * Date: January 12th, 2018
+ * 
+ * Controller for get request to '/days/<year>/<month>/<day>
+ */
+
 var Event = require('../models/Event.js');
 
+/* Get the events that occur on the specified day and render them to the view.
+ */
 exports.dayDisplay = function(req, res) {
 	let user = req.user.id;
 	
