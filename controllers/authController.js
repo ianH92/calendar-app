@@ -1,8 +1,17 @@
+/* Author: Ian (ianH92)
+ * Date: January 12th, 2018
+ * 
+ * Controller for sign up POST requests.
+ */
+
 var User = require('../models/User.js');
 const { body, validationResult } = require('express-validator/check');
 const { sanitizeBody } = require('express-validator/filter');
 var bcrypt = require('bcrypt');
 
+/* Handle a POST request to '/signup' by sanitizing entered data and creating the user in the
+ * database.
+ */
 exports.signup = [
 	body('username', 'Username is required').isLength({min: 3, max: 100}).withMessage('Username' +
 		 ' must be longer than 2 characters and shorter than 101 characters.').trim(),

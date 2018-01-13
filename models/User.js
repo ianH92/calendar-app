@@ -1,3 +1,9 @@
+/* Author: Ian (ianH92)
+ * Date: January 12th, 2018
+ * 
+ * Mongoose model for storing Users.
+ */
+
 var mongoose = require('mongoose');
 
 var UserSchema = new mongoose.Schema({

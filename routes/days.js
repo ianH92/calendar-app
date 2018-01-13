@@ -1,3 +1,9 @@
+/* Author: Ian (ianH92)
+ * Date: January 12th, 2018
+ * 
+ * '/days/... routes.
+ */
+
 var express = require('express');
 var router = express.Router();
 let passport = require('passport');

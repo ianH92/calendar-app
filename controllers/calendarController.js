@@ -1,5 +1,14 @@
+/* Author: Ian (ianH92)
+ * Date: January 12th, 2018
+ * 
+ * Controller for POST requests to '/events/<year>/<month>/<day>' to retrieve user calendar data.
+ */
+
 var Event = require('../models/Event.js');
 
+/* Handle a POST request to '/events/:year/:month/:day' by searching database for events that occur
+ * that month and sending them in JSON.
+ */
 exports.createCalendarJSON = function(req, res) {
 	
 	let user = req.user.id;

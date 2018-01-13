@@ -1,3 +1,8 @@
+/* Author: Ian (ianH92)
+ * Date: January 12th, 2018
+ */
+
+
 let express = require('express');
 let path = require('path');
 let favicon = require('serve-favicon');
@@ -82,7 +87,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use('/', index);
-app.use('/users', users);
 app.use('/events', events);
 app.use('/day', days);
 app.use('/todo', todo);

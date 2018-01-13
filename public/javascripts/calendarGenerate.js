@@ -1,12 +1,23 @@
+/* Author: Ian (ianH92)
+ * Date: January 12th, 2018
+ * 
+ * Script for creating the home page calendar. Uses an XMLHttpRequest to request the server return
+ * a JSON-representation of the events a user has stored for a calendar in addition to basic
+ * information about the month requested. The script then generates the calendar. Contains event
+ * listeners to generate new calendars and link to event and page views.
+ */
+
 let now = new Date();
 let year = now.getFullYear();
 let month = now.getMonth();
 let date = now.getDate();
 
+//Save these dates to allow for calendar naviagtion.
 let saveYear = year;
 let saveMonth = month;
 let saveDate = now.getDate();
 
+//Request the original calendar data.
 let xmlReq = new XMLHttpRequest();
 xmlReq.open('GET', ('/getcalendar/' + year + '/' + month + '/' + date));
 xmlReq.responseType = 'json';
@@ -28,6 +39,7 @@ prevMonth.textContent = '< ' +abbrMon[pMonth];
 currMonth.textContent =  months[month] + ' ' + year;
 nextMonth.textContent = abbrMon[nMonth] + ' >';
 
+//Attach linking to todo views to each todo.
 let todos = document.getElementsByClassName('todo');
 for(let i = 0; i < todos.length; i++) {
 	todos[i].addEventListener('click', () => {
@@ -35,6 +47,7 @@ for(let i = 0; i < todos.length; i++) {
 	});
 }
 
+//Add an event listener for viewing the previous month.
 prevMonth.addEventListener('click', function() {
 	let xmlReq2 = new XMLHttpRequest();
 	
@@ -63,6 +76,7 @@ prevMonth.addEventListener('click', function() {
 	nextMonth.textContent = abbrMon[nMonth] + ' >';
 });
 
+//Add an event listener to view the next month.
 nextMonth.addEventListener('click', function() {
 	let xmlReq2 = new XMLHttpRequest();
 	
@@ -91,6 +105,7 @@ nextMonth.addEventListener('click', function() {
 	nextMonth.textContent = abbrMon[nMonth] + ' >';
 });
 
+/* Generate the calendar using a JSON-representation of the calendar. */
 var genCal = function(cal) {
 	for(let i = 0; i < 42; i++) {
 		let day = null;

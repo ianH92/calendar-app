@@ -1,3 +1,9 @@
+/* Author: Ian (ianH92)
+ * Date: January 12th, 2018
+ * 
+ * Mongoose model for storing events and todos.
+ */
+
 var mongoose = require('mongoose');
 
 var EventSchema = new mongoose.Schema({
@@ -9,14 +15,20 @@ var EventSchema = new mongoose.Schema({
 	description: {type: String, max: 250},
 });
 
+/* Return the url for an event.
+ */
 EventSchema.virtual('url').get(function() {
 	return('/events/' + this._id);
 });
 
+/* Return the url for a todo.
+ */
 EventSchema.virtual('url_todo').get(function() {
 	return('/todo/' + this._id);
 });
 
+/* Return the formatted date for an event/todo.
+ */
 EventSchema.virtual('date').get(function() {
 	if(eventDate === null) { return ''; }
 	
@@ -26,10 +38,6 @@ EventSchema.virtual('date').get(function() {
 	
 	return days[this.eventDate.getUTCDay()] + ' ' + months[this.eventDate.getUTCMonth()] +
 			' ' + this.eventDate.getUTCDate() + ', '  + this.eventDate.getFullYear();
-});
-
-EventSchema.virtual('url').get(function() {
-	return '/home/events/' + this._id;
 });
 
 module.exports = mongoose.model('Event', EventSchema);

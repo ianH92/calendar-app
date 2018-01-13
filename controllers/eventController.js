@@ -1,7 +1,15 @@
+/* Author: Ian (ianH92)
+ * Date: January 12th, 2018
+ * 
+ * Controller for POST and GET requests to '/events'
+ */
+
 var Event = require('../models/Event.js');
 const { body, validationResult } = require('express-validator/check');
 const { sanitizeBody } = require('express-validator/filter');
 
+/* Display information about a requested event
+ */
 exports.eventDisplay = function(req, res) {
 
 	var id = req.params.eventId;
@@ -25,10 +33,14 @@ exports.eventDisplay = function(req, res) {
 	});
 };
 
+/* Render create event view
+ */
 exports.createEvent = function(req, res) {
 	res.render('createEvent');
 }
 
+/* Handle POST request to '/events/createEvent'. Create the Event and save it to the database.
+ */
 exports.createEventPost = [
 	body('name', 'Name for Event required').isLength({min: 3, max: 80}).withMessage('Event Name' +
 		 ' must be between 3-80 characters in length.').trim(),

@@ -1,3 +1,7 @@
+/* Author: Ian (ianH92)
+ * Date: January 12th, 2018
+ */
+
 var Events = require('../models/Event.js');
 
 exports.homePage = function(req, res) {

@@ -1,7 +1,15 @@
+/* Author: Ian (ianH92)
+ * Date: January 12th, 2018
+ * 
+ * Controller for POST and GET requests to '/todo' to retrieve user calendar data.
+ */
+
 var Event = require('../models/Event.js');
 const { body, validationResult } = require('express-validator/check');
 const { sanitizeBody } = require('express-validator/filter');
 
+/* Display a requested todo.
+ */
 exports.displayTodo = function(req, res) {
 	let id = req.params.todoID;
 	
@@ -23,10 +31,14 @@ exports.displayTodo = function(req, res) {
 	});
 };
 
+/* Render the create todo view.
+ */
 exports.createTodo = function(req, res) {
 	res.render('createTodo');
 };
 
+/* Handle a POST request to '/todo/createTodo'. Create the todo and save it to the database.
+ */
 exports.createTodoPost = [
 	body('name', 'Name for ToDo required').isLength({min: 3, max: 80}).withMessage('ToDo Name' +
 		 ' must be between 3-80 characters in length.').trim(),
