@@ -16,7 +16,10 @@ exports.dayDisplay = function(req, res) {
 	}, 'name eventDate priority description')
 	.sort({eventDate: +1})
 	.exec(function(error, event_list) {
-		if(error) { console.log('error'); }
+		if(error) { 
+			res.render('error', {error: error});
+			return;
+		}
 		
 		let months = ['January', 'February', 'March', 'April', 'May', 'June', 
 				  'July', 'August', 'September', 'October', 'November', 'December'];

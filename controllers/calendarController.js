@@ -20,7 +20,9 @@ exports.createCalendarJSON = function(req, res) {
 	}, 'name eventDate priority description')
 	.sort( { eventDate: +1 })
 	.exec(function(error, event_list) {
-		if(error) { console.log('error at create calendar'); }
+		if(error) { 
+			res.render('error', {error: error});
+		}
 		if(event_list === null) { event_list = []; }
 		
 		let obj = new Object();
