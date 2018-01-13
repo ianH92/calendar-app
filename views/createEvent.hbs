@@ -17,6 +17,12 @@
 			<a href="/logout/">LOGOUT</a>
 		</div>
 		<h2>Event Information</h2>
+		{{#if error}}
+			<p class="err">{{error}}</p>
+		{{/if}}
+		{{#each errors}}
+			<p class="err">{{this.msg}}</p>
+		{{/each}}
 		<fieldset>
 			<form method="post">
 				<div>
@@ -25,7 +31,7 @@
 				</div>
 				<div>
 					<label for="date">Event Date</label>
-					<input type="date" id="date" name="date" required min="1896-12-31" max="2096-12-31">
+					<input type="date" id="date" name="date" required min="1999-12-31" max="2096-12-31">
 				</div>
 				<div>
 					<label for="priority">Event Priority</label>

@@ -5,7 +5,7 @@ var EventSchema = new mongoose.Schema({
 	created: {type: Date, required: true, default: Date.now},
 	user: {type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true},
 	priority: {type: Number, min: 1, max: 5, default: 5},
-	eventDate: {type: Date, min: Date.now, max: new Date(2096, 11, 31, 23, 59, 59, 999)},
+	eventDate: {type: Date, min: new Date(1999, 11, 31), max: new Date(2096, 11, 31)},
 	description: {type: String, max: 250},
 });
 

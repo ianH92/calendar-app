@@ -2,7 +2,7 @@ let due = document.getElementById('due');
 let left = document.getElementById('left');
 let endDate = new Date(due.textContent);
 
-if(this.due === null) { 
+if(this.due === null) {
 	//Do Nothing
 } else {
 	let startDate = new Date();
@@ -18,9 +18,10 @@ if(this.due === null) {
 	
 	let reformattedDay = new Date(endYear, endMonth, endDay);
 	due.textContent = reformattedDay.toString();
-
+	
 	let negative = false;
-	if(endYear <= startYear && endMonth <= startMonth && endDay < startDay) {
+	if((endYear < startYear) || (endYear === startYear && endMonth < startMonth) || 
+	(endYear === startYear && endMonth === startMonth && endDay < startDay)) {
 		let temp = startYear;
 		startYear = endYear;
 		endYear = temp;

@@ -19,7 +19,7 @@ exports.eventDisplay = function(req, res) {
 					date: d, description: eventDetails.description
 				});
 			} else {
-				res.send('This event does not belong to this user.');
+				res.render('event', {error: 'This event does not belong to this user.'});
 			}
 		}
 	});
@@ -31,10 +31,15 @@ exports.createEvent = function(req, res) {
 
 exports.createEventPost = [
 	body('name', 'Name for Event required').isLength({min: 3, max: 80}).withMessage('Event Name' +
-		 ' must be longer than 2 characters and shorter than 81 characters.').trim(),
+		 ' must be between 3-80 characters in length.').trim(),
+	
 	body('priority').optional({checkFalsy: true}).trim(),
+	
 	body('date').optional({checkFalsy: true}).isISO8601().withMessage('Valid Event date required'),
-	body('description').optional({checkFalsy: true}).trim(),
+	
+	body('description').optional({checkFalsy: true}).isLength({min: 0, max: 250}).withMessage('Event ' +
+		'Description must be between 0-250 characters in length.').trim(),
+	
 	body('currdate').optional({checkFalsy: true}).trim(),
 	
 	sanitizeBody('name').trim().escape(),
@@ -58,11 +63,15 @@ exports.createEventPost = [
 			});
 			
 			newEvent.save(function(error, savedEvent) {
-				if(error) { console.log('Error at event save'); } 
+				if(error) {
+					res.render('createEvent', {error: error}); 
+					return;
+				}
+				
 				res.redirect(savedEvent.url);
 			});
 		} else {
-			res.render('error', {error: errors.array()});
+			res.render('createEvent', {errors: errors.array()});
 			return;
 		}
 	}
