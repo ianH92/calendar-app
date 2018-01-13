@@ -50,3 +50,8 @@ button {
 	width: 150px;
 	margin-bottom: 5px;
 }
+
+.err {
+	color: red;
+	text-align: center;
+}

@@ -9,7 +9,7 @@ exports.createCalendarJSON = function(req, res) {
 	let today = req.params.day;
 	
 	let daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-	let maxDay = (month === 1 && year % 4 === 0) ? 29 : daysInMonth[month];
+	let maxDay = (month == 1 && year % 4 == 0) ? 29 : daysInMonth[month];
 	
 	let minDate = new Date(year, month, 1);
 	let maxDate = new Date(year, month, maxDay);
