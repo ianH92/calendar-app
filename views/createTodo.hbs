@@ -17,6 +17,12 @@
 			<a href="/logout/">LOGOUT</a>
 		</div>
 		<h2>Enter TODO Information</h2>
+		{{#if error}}
+			<p class="err">{{error}}</p>
+		{{/if}}
+		{{#each errors}}
+			<p class="err">{{this.msg}}</p>
+		{{/each}}
 		<fieldset>
 			<form method="post">
 				<div>

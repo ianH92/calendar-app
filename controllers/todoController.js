@@ -29,9 +29,10 @@ exports.createTodo = function(req, res) {
 
 exports.createTodoPost = [
 	body('name', 'Name for ToDo required').isLength({min: 3, max: 80}).withMessage('ToDo Name' +
-		 ' must be longer than 2 characters and shorter than 81 characters.').trim(),
+		 ' must be between 3-80 characters in length.').trim(),
 	body('priority').optional({checkFalsy: true}).trim(),
-	body('description').optional({checkFalsy: true}).trim(),
+	body('description').optional({checkFalsy: true}).isLength({min: 0, max: 250}).withMessage('ToDo ' +
+		'description must be between 0-250 characters in length.').trim(),
 	
 	sanitizeBody('name').trim().escape(),
 	sanitizeBody('priority').trim().escape(),
@@ -50,11 +51,15 @@ exports.createTodoPost = [
 			});
 			
 			newEvent.save(function(error, savedEvent) {
-				if(error) { console.log('Error at event save'); } 
+				if(error) { 
+					res.render('createTodo', {error: error});
+					return;
+				} 
 				res.redirect(savedEvent.url_todo);
 			});
 		} else {
-			res.render('error', {error: errors.array()});
+			console.log('thhthht');
+			res.render('createTodo', {errors: errors.array()});
 			return;
 		}
 	}
