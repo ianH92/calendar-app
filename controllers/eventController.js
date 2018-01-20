@@ -16,7 +16,7 @@ exports.eventDisplay = function(req, res) {
 	
 	Event.findById(id, function(err, eventDetails) {
 		if(err) { 
-			res.render('error at event display', {error: err});
+			res.render('error', {error: err});
 		} else {
 			let d = (eventDetails.eventDate === null) ? null : eventDetails.eventDate.toUTCString();
 			
@@ -88,3 +88,12 @@ exports.createEventPost = [
 		}
 	}
 ];
+
+exports.deleteEvent = function(req, res, next) {
+	Event.findByIdAndRemove(req.params.eventId, function(error) {
+		if(error) {
+			res.render('error', {error: err});
+		}
+		res.redirect('/home');
+	});
+};

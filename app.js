@@ -16,7 +16,6 @@ let bcrypt = require('bcrypt');
 let flash = require('connect-flash');
 
 let index = require('./routes/index');
-let users = require('./routes/users');
 let events = require('./routes/events');
 let days = require('./routes/days');
 let todo = require('./routes/todo');

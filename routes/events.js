@@ -15,6 +15,9 @@ router.get('/createEvent', auth.authenticate, eventController.createEvent);
 
 router.post('/createEvent', auth.authenticate, eventController.createEventPost);
 
+
 router.get('/:eventId', auth.authenticate, eventController.eventDisplay);
+
+router.post('/:eventId', auth.authenticate, eventController.deleteEvent);
 
 module.exports = router;
