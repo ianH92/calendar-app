@@ -28,6 +28,11 @@
 			{{#if description}}
 				<p><strong>Description: </strong>{{description}}</p>
 			{{/if}}
+			<div>
+			<form method="POST" onsubmit="return confirm('Confirm deleting this event.');">
+				<button type="submit" id="delete">Delete Event</button>
+			</form>
+			</div>
 		</div>
 		<script src="/javascripts/eventView.js"></script>
 	</body>

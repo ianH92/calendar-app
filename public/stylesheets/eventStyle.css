@@ -12,3 +12,8 @@ p {
 	width: 260px;
 	margin: 0 auto;
 }
+
+#delete {
+	width: 100px;
+	margin-left: 80px;
+}
