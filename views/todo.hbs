@@ -15,12 +15,20 @@
 			<a href="/todo/createTodo">CREATE TODO</a>
 			<a href="/logout/">LOGOUT</a>
 		</div>
+		{{#if error}}
+			<p class=err">{{error}}</p>
+		{{/if}}
 		<div id="event">
 			<p><strong>Name: </strong>{{name}}</p>
 			<p><strong>Priority: </strong>{{priority}}</p>
 			{{#if description}}
 				<p><strong>Description: </strong>{{description}}</p>
 			{{/if}}
+			<div>
+			<form method="POST" onsubmit="return confirm('Confirm deleting this todo.');">
+				<button type="submit" id="delete">Delete TODO</button>
+			</form>
+			</div>
 		</div>
 	</body>
 </html>

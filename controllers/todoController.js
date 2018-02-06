@@ -76,3 +76,12 @@ exports.createTodoPost = [
 		}
 	}
 ];
+
+exports.deleteTodo = function(req, res, next) {
+	Event.findByIdAndRemove(req.params.todoId, function(error) {
+		if(error) {
+			res.render('error', {error: err});
+		}
+		res.redirect('/home');
+	});
+};

@@ -17,4 +17,6 @@ router.post('/createTodo', auth.authenticate, todoController.createTodoPost);
 
 router.get('/:todoID', auth.authenticate, todoController.displayTodo);
 
+router.post('/:todoId', auth.authenticate, todoController.deleteTodo);
+
 module.exports = router;
